@@ -19,6 +19,16 @@ jobs:
             unzip -o sitepadi-source.zip -d .
           fi
 
+      - name: Place google-services.json
+        run: |
+          if [ -f google-services.json ]; then
+            mkdir -p android/app
+            cp google-services.json android/app/google-services.json
+            echo "google-services.json placed in android/app/"
+          else
+            echo "No google-services.json at repo root — skipping (Google Sign-In config step not done yet, that's fine)"
+          fi
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
