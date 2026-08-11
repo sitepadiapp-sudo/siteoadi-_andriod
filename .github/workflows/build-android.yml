@@ -29,6 +29,12 @@ jobs:
             echo "No google-services.json at repo root — skipping (Google Sign-In config step not done yet, that's fine)"
           fi
 
+      - name: Apply Google Sign-In Web Client ID
+        run: |
+          sed -i "s/REPLACE_ME.apps.googleusercontent.com/211099277111-d7nrolgkmi1nde88fon5cs01f39r40sq.apps.googleusercontent.com/g" capacitor.config.ts
+          sed -i "s/REPLACE_ME.apps.googleusercontent.com/211099277111-d7nrolgkmi1nde88fon5cs01f39r40sq.apps.googleusercontent.com/g" android/app/src/main/res/values/strings.xml
+          echo "Web Client ID applied to both files"
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
