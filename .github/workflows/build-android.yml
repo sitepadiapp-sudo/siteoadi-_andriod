@@ -1,5 +1,9 @@
 name: Build Android APK
 
+# Runs automatically on every push to main/master, and can also be
+# triggered manually from the Actions tab on GitHub's website (click
+# "Run workflow") — useful if you just want a fresh APK without
+# pushing a code change.
 on:
   push:
     branches: [ main, master ]
@@ -7,18 +11,28 @@ on:
 
 jobs:
   build:
+    # GitHub provides this machine for free — this is the "cloud
+    # computer" doing the actual build, not your laptop.
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # Project was uploaded as a single sitepadi-source.zip (GitHub's
+      # web upload only allows 100 files per commit — way fewer than
+      # this project has — so the whole thing goes in as one file and
+      # gets unzipped here instead).
       - name: Unzip project source
         run: |
           if [ -f sitepadi-source.zip ]; then
             unzip -o sitepadi-source.zip -d .
           fi
 
+      # google-services.json (downloaded from Firebase Console) gets
+      # uploaded to the repo root via GitHub's web UI, since uploading
+      # into a specific nested folder from a phone is fiddly. Move it
+      # into the one place the Android build actually looks for it.
       - name: Place google-services.json
         run: |
           if [ -f google-services.json ]; then
@@ -29,6 +43,10 @@ jobs:
             echo "No google-services.json at repo root — skipping (Google Sign-In config step not done yet, that's fine)"
           fi
 
+      # capacitor.config.ts and strings.xml live inside sitepadi-source.zip,
+      # so they can't be hand-edited on GitHub's website like the workflow
+      # file can. Patch the real Google Sign-In Web Client ID in here
+      # instead, every build, so the zip itself never needs touching.
       - name: Apply Google Sign-In Web Client ID
         run: |
           sed -i "s/REPLACE_ME.apps.googleusercontent.com/211099277111-d7nrolgkmi1nde88fon5cs01f39r40sq.apps.googleusercontent.com/g" capacitor.config.ts
@@ -64,9 +82,53 @@ jobs:
         working-directory: android
         run: ./gradlew assembleDebug --no-daemon
 
+      # Release keystore never lives in the repo (unlike debug.keystore) —
+      # it's stored as a GitHub Secret (base64-encoded) and only exists
+      # as a real file transiently during this build, on GitHub's own
+      # server. If the secret isn't set yet, this step does nothing and
+      # the release build below just produces an unsigned artifact
+      # instead of failing.
+      - name: Write release keystore from secret
+        env:
+          RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+        run: |
+          if [ -n "$RELEASE_KEYSTORE_BASE64" ]; then
+            echo "$RELEASE_KEYSTORE_BASE64" | base64 -d > android/app/release.keystore
+            echo "Release keystore written"
+          else
+            echo "RELEASE_KEYSTORE_BASE64 secret not set yet — skipping (release build will be unsigned)"
+          fi
+
+      - name: Build signed release (AAB + APK)
+        working-directory: android
+        env:
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+        run: ./gradlew bundleRelease assembleRelease --no-daemon
+
+      # The finished APK shows up as a downloadable "artifact" on the
+      # Actions run's results page — no terminal needed to get it.
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: sitepadi-debug-apk
           path: android/app/build/outputs/apk/debug/app-debug.apk
           retention-days: 30
+
+      # .aab is what the Play Store actually requires for submission.
+      - name: Upload release AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitepadi-release-aab
+          path: android/app/build/outputs/bundle/release/app-release.aab
+          retention-days: 30
+          if-no-files-found: ignore
+
+      # Signed APK — useful for sideloading to verify the signed release
+      # build actually works before uploading the AAB to Play Console.
+      - name: Upload release APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitepadi-release-apk
+          path: android/app/build/outputs/apk/release/app-release.apk
+          retention-days: 30
+          if-no-files-found: ignore
