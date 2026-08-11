@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "211099277111",
+    "project_id": "sitepadi-c712e",
+    "storage_bucket": "sitepadi-c712e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211099277111:android:4b113cb1fd3946c9ba6cb2",
+        "android_client_info": {
+          "package_name": "app.sitepadi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBekB2yEDEUhaid0R-Sw1TeLIfPD7AfkKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211099277111:android:d19f99c58aa291c4ba6cb2",
+        "android_client_info": {
+          "package_name": "com.sitepadi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBekB2yEDEUhaid0R-Sw1TeLIfPD7AfkKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
