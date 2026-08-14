@@ -72,6 +72,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "211099277111-4s7lulcgc4q36e6hlt20m0qgr2mmki2b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitepadi.app",
+            "certificate_hash": "e6c7b0448d90ef2b3f7f7e7420be656d991cfd78"
+          }
+        },
+        {
+          "client_id": "211099277111-btll78260u03lgc26kfkbslsmmskhla5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitepadi.app",
+            "certificate_hash": "0fe167ceee293ccaac4310ae38f60041d80a8866"
+          }
+        },
+        {
           "client_id": "211099277111-jsp27kn0slcpmicdhf2jfq7fallvk0pq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
