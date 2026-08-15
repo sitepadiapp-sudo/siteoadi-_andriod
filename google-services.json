@@ -1,0 +1,129 @@
+{
+  "project_info": {
+    "project_number": "211099277111",
+    "project_id": "sitepadi-c712e",
+    "storage_bucket": "sitepadi-c712e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211099277111:android:4b113cb1fd3946c9ba6cb2",
+        "android_client_info": {
+          "package_name": "app.sitepadi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211099277111-d7nrolgkmi1nde88fon5cs01f39r40sq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBekB2yEDEUhaid0R-Sw1TeLIfPD7AfkKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211099277111-d7nrolgkmi1nde88fon5cs01f39r40sq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211099277111:android:d19f99c58aa291c4ba6cb2",
+        "android_client_info": {
+          "package_name": "com.sitepadi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211099277111-d7nrolgkmi1nde88fon5cs01f39r40sq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBekB2yEDEUhaid0R-Sw1TeLIfPD7AfkKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211099277111-d7nrolgkmi1nde88fon5cs01f39r40sq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211099277111:android:1927a5a4d46aefacba6cb2",
+        "android_client_info": {
+          "package_name": "com.sitepadi.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211099277111-1puth0hlgubrcfv01966p298e84j11lj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitepadi.app",
+            "certificate_hash": "cfce9c270fe55279c85c4e31ab0d5a7df4ddf282"
+          }
+        },
+        {
+          "client_id": "211099277111-4s7lulcgc4q36e6hlt20m0qgr2mmki2b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitepadi.app",
+            "certificate_hash": "e6c7b0448d90ef2b3f7f7e7420be656d991cfd78"
+          }
+        },
+        {
+          "client_id": "211099277111-btll78260u03lgc26kfkbslsmmskhla5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitepadi.app",
+            "certificate_hash": "0fe167ceee293ccaac4310ae38f60041d80a8866"
+          }
+        },
+        {
+          "client_id": "211099277111-jsp27kn0slcpmicdhf2jfq7fallvk0pq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.sitepadi.app",
+            "certificate_hash": "3f4efabfe6392894c699552db3bdbd3c100fdab9"
+          }
+        },
+        {
+          "client_id": "211099277111-d7nrolgkmi1nde88fon5cs01f39r40sq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBekB2yEDEUhaid0R-Sw1TeLIfPD7AfkKQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "211099277111-d7nrolgkmi1nde88fon5cs01f39r40sq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
